@@ -1,0 +1,18 @@
+<%= form_tag search_friends_path,remote:true,method: :get do %>
+    <%= text_field_tag :friend,params[:friend] %>
+    <%= button_tag type: :submit do %>
+        Search
+    <% end %>
+<% end %>
+
+<div id="result">
+
+</div>
+
+<% if @friends %>
+    <% @friends.each do |friend| %>
+        <div>
+            <p>Email : <%= friend.email %>  First Name : <%= friend.first_name %>  Last Name : <%= friend.last_name %> <%= link_to "Stop Following",my_friends_path(id:friend.id),method: :delete,data:{confirm:"Are You Sure?"} %></p>
+        </div>
+    <% end %>
+<% end %>

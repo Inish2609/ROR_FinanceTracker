@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'my_stock',to:'pages#my_stock'
   get 'search_stock',to:'stocks#search'
+  get 'my_friends',to:'pages#my_friends'
+  delete 'my_friends',to:"pages#delete_friends"
+  get 'search_friends',to:'pages#search_friends'
+  post 'add_friend/:id',to:'pages#add_friend',as:"add_friend"
 end

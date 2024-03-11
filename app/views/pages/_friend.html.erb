@@ -1,0 +1,16 @@
+<div>
+    <%= render 'layouts/message' %>
+</div>
+<% if @friend %>
+    <% @friend.each do |fri| %>
+        <p><%= fri.first_name %></p>
+        <p><%= fri.last_name %></p>
+        <p><%= fri.email %></p>
+        <%= link_to "View Profile","#" %>
+        <% if !(current_user.friends.where(id:fri.id).exists?) %>
+            <%= link_to "Add Friend",add_friend_path(fri.id),method: :post %>
+        <% else %>
+            <p>You Are Already Friends</p>
+        <% end %>
+    <% end %>
+<% end %>
