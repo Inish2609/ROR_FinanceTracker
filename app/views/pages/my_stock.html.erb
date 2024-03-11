@@ -1,0 +1,16 @@
+<h1>Search Stock</h1>
+<%= form_tag search_stock_path,remote: true,method: :get do %>
+    <%= text_field_tag :stock,params[:stock] %>
+    <%= button_tag type: :submit do %>
+        Search
+    <% end %>
+<% end %>
+<div id="result">
+
+</div>
+
+<% @traked_stocks.each do |stock| %>
+    <div>
+        <p>Ticker : <%= stock.ticker %>  Name : <%= stock.name %>  Price : <%= stock.last_price %></p>
+    </div>
+<% end %>
