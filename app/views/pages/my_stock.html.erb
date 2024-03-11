@@ -11,6 +11,6 @@
 
 <% @traked_stocks.each do |stock| %>
     <div>
-        <p>Ticker : <%= stock.ticker %>  Name : <%= stock.name %>  Price : <%= stock.last_price %></p>
+        <p>Ticker : <%= stock.ticker %>  Name : <%= stock.name %>  Price : <%= stock.last_price %> <%= link_to "Remove", user_stock_path(stock),method: :delete,data:{confirm:"Are You Sure?"} %></p>
     </div>
 <% end %>

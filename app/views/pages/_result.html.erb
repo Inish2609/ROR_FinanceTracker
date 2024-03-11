@@ -5,5 +5,9 @@
     <p><%= @stock.ticker %></p>
     <p><%= @stock.name %></p>
     <p><%= @stock.last_price %></p>
-    <%= link_to "Add",user_stocks_path(user:current_user,stock:@stock.ticker),method: :post %>
+    <% if !(current_user.stocks.where(ticker:@stock.ticker).exists?) && current_user.stocks.count < 10 %>  
+        <%= link_to "Add",user_stocks_path(user:current_user,stock:@stock.ticker),method: :post %>
+    <% else %>
+        <p>You Are Already Tracking</p>
+    <% end %>
 <% end %>
