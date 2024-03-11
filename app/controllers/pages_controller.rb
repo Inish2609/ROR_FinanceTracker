@@ -52,4 +52,10 @@ class PagesController < ApplicationController
     redirect_to my_friends_path
   end
 
+  def show
+    # byebug
+    @user = User.find(params[:id])
+    @traked_stocks = @user.stocks
+  end
+
 end

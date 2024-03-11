@@ -6,7 +6,7 @@
         <p><%= fri.first_name %></p>
         <p><%= fri.last_name %></p>
         <p><%= fri.email %></p>
-        <%= link_to "View Profile","#" %>
+        <%= link_to "View Profile",user_path(fri.id) %>
         <% if !(current_user.friends.where(id:fri.id).exists?) %>
             <%= link_to "Add Friend",add_friend_path(fri.id),method: :post %>
         <% else %>

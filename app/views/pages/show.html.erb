@@ -1,0 +1,13 @@
+<p>Email : <%= @user.email %> <br><br>  First Name : <%= @user.first_name %> <br><br> Last Name : <%= @user.last_name %></p>
+<% @traked_stocks.each do |stock| %>
+    <div>
+        <p>Ticker : <%= stock.ticker %>  Name : <%= stock.name %>  Price : <%= stock.last_price %> 
+            <% if @user.id == current_user.id %>
+                <%= link_to "Remove", user_stock_path(stock),method: :delete,data:{confirm:"Are You Sure?"} %></p>
+            <% elsif !(current_user.stocks.where(id:stock.id).exists?) && current_user.stocks.count < 10 %>
+                <%= link_to "Add",user_stocks_path(user:current_user,stock:stock.ticker),method: :post %>
+            <% else %>
+                <p>You Are Already Tracking</p>
+            <% end %>
+    </div>
+<% end %>

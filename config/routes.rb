@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   delete 'my_friends',to:"pages#delete_friends"
   get 'search_friends',to:'pages#search_friends'
   post 'add_friend/:id',to:'pages#add_friend',as:"add_friend"
+  get 'users/:id',to:"pages#show",as:"user"
 end
